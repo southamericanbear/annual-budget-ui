@@ -7,28 +7,56 @@ import { Input } from "@/components/ui/input";
 export function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   return (
-    <div className="flex flex-col gap-3 border-solid border-2 p-10 w-80 border-stone-950 border-opacity-45 rounded-md">
-      <form action={dispatch}>
-        <Input type="text" name="email" placeholder="Email" required />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
-        <Button>Login</Button>
-        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+    <>
+      <div className="flex flex-col items-center justify-center rounded-md bg-gray-50 p-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-md space-y-8">
+          <div>
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+              Sign in to your account
+            </h2>
+          </div>
+          <form className="mt-8 space-y-6" action={dispatch}>
+            <input type="hidden" name="remember" defaultValue="true" />
+            <div className="-space-y-px rounded-md shadow-sm">
+              <div>
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
+                <Input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder="Email address"
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="relative block w-full px-3 py-2 rounded-none rounded-b-md border-0 border-b-2 border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+            <div>
+              <Button type="submit">Sign in</Button>
+            </div>
+          </form>
           {errorMessage && (
-            <>
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
+            <p className="mt-2 text-center text-sm text-red-600">
+              {errorMessage}
+            </p>
           )}
         </div>
-      </form>
-    </div>
+      </div>
+    </>
   );
 }

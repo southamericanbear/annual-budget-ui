@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: "Annual Budget",
   },
   description: "Annual Budget",
-  metadataBase: new URL("https://todo.com"),
+  // metadataBase: new URL("https://todo.com"),
 };
 
 export default function RootLayout({
