@@ -1,3 +1,4 @@
+import { SidebarMenuLayout } from "@/components";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,8 +7,10 @@ export const metadata: Metadata = {
 
 export default function SettingsPage() {
   return (
-    <div className="container h-screen flex justify-center items-center">
-      <h1>Settings</h1>
-    </div>
+    <SidebarMenuLayout>
+      <div className="container h-screen flex justify-center items-center">
+        <h1>Settings</h1>
+      </div>
+    </SidebarMenuLayout>
   );
 }
