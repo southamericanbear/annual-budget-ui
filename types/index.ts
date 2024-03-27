@@ -1,3 +1,5 @@
+export * from "./insights";
+
 export type SideNavItem = {
   title: string;
   path: string;

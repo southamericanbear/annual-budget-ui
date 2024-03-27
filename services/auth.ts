@@ -1,17 +1,18 @@
-import api from "./api";
+import { fetchWithToken } from "./api";
 import NextAuth from "next-auth";
 import { z } from "zod";
 import { authConfig } from "@/auth.config";
 import Credentials from "next-auth/providers/credentials";
+import { cookies } from "next/headers";
 
 export async function login(email: string, password: string) {
   try {
-    const response = await api.post("/auth/login", {
+    const data = await fetchWithToken("auth/login", "POST", {
       email,
       password,
     });
 
-    return response.data;
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -29,7 +30,7 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await login(email, password);
-
+          console.log({ user });
           if (!user) return null;
 
           return user;
@@ -40,4 +41,18 @@ export const { auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
+
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        const userToken = { ...token, ...user };
+        cookies().set("user", JSON.stringify(userToken));
+      }
+
+      return { ...token, ...user };
+    },
+  },
 });
