@@ -1,4 +1,4 @@
-import { SidebarMenuLayout } from "@/components";
+import { SidebarMenuLayout } from "../components/layouts/index";
 import { getInsights } from "@/lib/data/insights";
 
 export default async function Home() {

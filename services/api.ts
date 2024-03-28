@@ -1,20 +1,3 @@
-// "use server";
-
-// import axios, { AxiosInstance } from "axios";
-
-//
-
-// const api: AxiosInstance = axios.create({
-//   baseURL: baseUrl,
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });
-
-// export default api;
-
-// FetchUtils.js
-
 import { cookies } from "next/headers";
 
 export async function fetchWithToken(
@@ -50,6 +33,3 @@ export async function fetchWithToken(
 
   return response.json();
 }
-
-// Example usage:
-// const data = await fetchWithToken('http://localhost:1990/api/insights');
