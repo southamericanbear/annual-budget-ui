@@ -1,4 +1,4 @@
-import { fetchWithToken } from "./api";
+import { fetchService } from "./api";
 import NextAuth from "next-auth";
 import { z } from "zod";
 import { authConfig } from "@/auth.config";
@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 
 export async function login(email: string, password: string) {
   try {
-    const data = await fetchWithToken("auth/login", "POST", {
+    const data = await fetchService("auth/login", "POST", {
       email,
       password,
     });
@@ -30,7 +30,7 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await login(email, password);
-          console.log({ user });
+
           if (!user) return null;
 
           return user;

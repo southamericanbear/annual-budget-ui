@@ -1,8 +1,8 @@
 import { Insights } from "@/types";
-import { fetchWithToken } from "./api";
+import { fetchService } from "./api";
 
-export async function fetchInsights(): Promise<Insights> {
-  const response = await fetchWithToken("insights");
+export async function fetchInsights(token: string): Promise<Insights> {
+  const response = await fetchService("insights", "GET", null, token);
 
   if (!response) {
     console.error(

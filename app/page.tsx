@@ -1,8 +1,10 @@
-import { SidebarMenuLayout } from "../components/layouts/index";
-import { getInsights } from "@/lib/data/insights";
+import { cookies } from "next/headers";
+import { SidebarMenuLayout } from "@/components/layouts";
+import { getInsights } from "@/lib";
 
 export default async function Home() {
-  const { accounts, basicData } = await getInsights();
+  const { token } = JSON.parse(cookies().get("user")?.value || "{}");
+  const { accounts, basicData } = await getInsights(token);
 
   return (
     <SidebarMenuLayout>

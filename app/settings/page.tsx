@@ -1,4 +1,4 @@
-import { SidebarMenuLayout } from "@/components";
+import { SidebarMenuLayout } from "@/components/layouts";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

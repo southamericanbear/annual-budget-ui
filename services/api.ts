@@ -1,12 +1,9 @@
-import { cookies } from "next/headers";
-
-export async function fetchWithToken(
+export async function fetchService(
   url: string,
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE" = "GET",
-  body: any = null
+  body: any = null,
+  token?: string
 ) {
-  const { token } = JSON.parse(cookies().get("user")?.value || "{}");
-
   const fetchOptions: RequestInit = {
     method: method,
     headers: {
