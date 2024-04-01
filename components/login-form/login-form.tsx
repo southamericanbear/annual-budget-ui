@@ -1,8 +1,9 @@
 "use client";
+
 import { useFormState } from "react-dom";
 import { authenticate } from "@/lib/actions/auth";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { InputLogin } from "@/components";
 
 export function LoginForm() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
@@ -22,7 +23,7 @@ export function LoginForm() {
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
-                <Input
+                <InputLogin
                   id="email-address"
                   name="email"
                   type="email"
@@ -35,7 +36,7 @@ export function LoginForm() {
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
-                <input
+                <InputLogin
                   id="password"
                   name="password"
                   type="password"

@@ -1,5 +1,5 @@
 export interface Insights {
-  basicData: BasicDatum[];
+  basicData: BasicData[];
   accounts: Account[];
 }
 
@@ -10,7 +10,7 @@ export interface Account {
   type: string;
 }
 
-export interface BasicDatum {
+export interface BasicData {
   name: string;
   value: number;
   currency: string;

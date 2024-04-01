@@ -1,4 +1,5 @@
 export * from "./insights";
+export * from "./accounts";
 
 export type SideNavItem = {
   title: string;
