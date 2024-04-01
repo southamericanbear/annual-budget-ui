@@ -1,9 +1,9 @@
 import { SidebarMenuLayout } from "@/components/layouts/index";
-// import { AccountTransactionsTable } from "@/components/account-transactions-table/index";
+import { AccountTransactionsTable } from "@/components/account-transactions-table";
 import { getAccountDetails as getAcountsDetailsService } from "@/lib/data/account-details";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-// import { EditAccountForm } from "@/components/edit-account-form";
+import { EditAccountForm } from "@/components/edit-account-form";
 
 const getAccountDetails = async (accountId: string) => {
   try {
@@ -38,13 +38,13 @@ export default async function AccountPage(props: any) {
     <SidebarMenuLayout>
       <div>
         <h1 className="text-2xl mb-4">{name}</h1>
-        {/* <EditAccountForm
+        <EditAccountForm
           accountId={accountId}
           name={name}
           value={value}
           type={type}
         />
-        <AccountTransactionsTable transactions={transactions} /> */}
+        <AccountTransactionsTable transactions={transactions} />
       </div>
     </SidebarMenuLayout>
   );
