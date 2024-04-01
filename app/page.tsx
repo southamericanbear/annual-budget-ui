@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { SidebarMenuLayout } from "@/components/layouts";
 import { getInsights } from "@/lib";
+import { DashboardCard } from "@/components";
 
 export default async function Home() {
   const { token } = JSON.parse(cookies().get("user")?.value || "{}");
@@ -13,10 +14,7 @@ export default async function Home() {
           <span className="text-2xl font-semibold">Basic Data:</span>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {basicData.map((data) => (
-              <div key={data.name} className="bg-white p-4 shadow rounded h-40">
-                <h2 className="text-lg font-semibold">{data.name}</h2>
-                <p>{data.value}</p>
-              </div>
+              <DashboardCard key={data.name} {...data} />
             ))}
           </div>
         </div>
@@ -25,14 +23,7 @@ export default async function Home() {
           <span className="text-2xl font-semibold">Accounts:</span>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {accounts.map((account) => (
-              <div
-                key={account.id}
-                className="bg-white p-4 shadow rounded h-40"
-              >
-                <h2 className="text-lg font-semibold">{account.name}</h2>
-                <p>{account.type}</p>
-                <p>{account.value}</p>
-              </div>
+              <DashboardCard key={account.id} {...account} />
             ))}
           </div>
         </div>
