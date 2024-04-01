@@ -21,30 +21,38 @@ export const AccountTransactionsTable = ({
 }: AccountTransactionsTableProps) => {
   return (
     <ItemsCardLayout className="mt-8 p-6">
-      <div>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Id</TableHead>
-              {accountName && <TableHead>Account</TableHead>}
-              <TableHead>Amount</TableHead>
-              <TableHead>Date</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {transactions.map((transaction) => (
-              <TableRow key={transaction.id}>
-                <TableCell>{transaction.id}</TableCell>
-                {accountName && <TableCell>{accountName}</TableCell>}
-                <TableCell>{transaction.value}</TableCell>
-                <TableCell>
-                  {moment(transaction.createdAt).format("DD/MM/YYYY")}
-                </TableCell>
+      {transactions.length ? (
+        <div>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Id</TableHead>
+                {accountName && <TableHead>Account</TableHead>}
+                <TableHead>Amount</TableHead>
+                <TableHead>Date</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
+            </TableHeader>
+            <TableBody>
+              {transactions.map((transaction) => (
+                <TableRow key={transaction.id}>
+                  <TableCell>{transaction.id}</TableCell>
+                  {accountName && <TableCell>{accountName}</TableCell>}
+                  <TableCell>{transaction.value}</TableCell>
+                  <TableCell>
+                    {moment(transaction.createdAt).format("DD/MM/YYYY")}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      ) : (
+        <div className="flex justify-center">
+          <span className="text-center text-sm text-gray-600">
+            There is no transactions to show
+          </span>
+        </div>
+      )}
     </ItemsCardLayout>
   );
 };

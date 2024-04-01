@@ -14,7 +14,6 @@ export const editAccount = async (
 ) => {
   const { token } = JSON.parse(cookies().get("user")?.value || "{}");
 
-  const account = await editAccountDetails(token, accountId, description);
+  await editAccountDetails(token, accountId, description);
   revalidatePath(`/account/${accountId}`);
-  return account;
 };

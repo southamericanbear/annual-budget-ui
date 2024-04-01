@@ -4,6 +4,7 @@ import { CiEdit } from "react-icons/ci";
 import { useState } from "react";
 import { editAccount } from "@/lib/actions/account";
 import { ItemsCardLayout } from "..";
+import { useRouter } from "next/navigation";
 
 interface EditAccountFormProps {
   accountId: string;
@@ -18,6 +19,7 @@ export const EditAccountForm = ({
   value,
   type,
 }: EditAccountFormProps) => {
+  const { refresh } = useRouter();
   const [edit, setEdit] = useState<boolean>(false);
   const [inputName, setInputName] = useState<string>(name);
   const [inputValue, setInputValue] = useState<number>(value);
@@ -29,6 +31,7 @@ export const EditAccountForm = ({
       value: inputValue,
       type: inputType,
     });
+    refresh();
     setEdit(false);
   }
 
