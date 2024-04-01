@@ -25,4 +25,5 @@ export const authConfig = {
     secret: process.env.JWT_SECRET,
   } as any,
   providers: [], // Add providers with an empty array for now
+  secret: process.env.AUTH_SECRET,
 } satisfies NextAuthConfig;
