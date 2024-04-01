@@ -6,7 +6,7 @@ export async function fetchInsights(token: string): Promise<Insights> {
 
   if (!response) {
     console.error(
-      "Failed to fetch insights en el fetchInsai:",
+      "Failed to fetch insights en el fetchInsight:",
       response.statusText
     );
   }
