@@ -36,7 +36,7 @@ export const DashboardCard = ({
         </div>
       </CardContent>
       <CardFooter className="px-0 py-2">
-        <Link href={id ? `/account/${id}` : `/account`}>View Details</Link>
+        <Link href={id ? `/accounts/${id}` : `/account`}>View Details</Link>
       </CardFooter>
     </Card>
   );
