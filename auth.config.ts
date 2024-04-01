@@ -8,8 +8,8 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const user = cookies().get("user")?.value;
-
       const isLoggedIn = !!auth?.user && !!user;
+
       const isOnDashboard =
         nextUrl.pathname.startsWith("/") && nextUrl.pathname !== "/login";
       if (isOnDashboard) {
