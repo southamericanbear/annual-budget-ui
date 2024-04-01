@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui";
-import { ItemsCardLayout } from "..";
+import ItemsCardLayout from "../layouts/items-card-layout";
 
 interface AccountTransactionsTableProps {
   transactions: Transaction[];

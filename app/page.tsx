@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { SidebarMenuLayout } from "@/components/layouts";
 import { getInsights } from "@/lib";
-import { DashboardCard } from "@/components";
+import { DashboardCard } from "@/components/dashboard-card";
 
 export default async function Home() {
   const { token } = JSON.parse(cookies().get("user")?.value || "{}");
