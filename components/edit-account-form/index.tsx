@@ -24,6 +24,7 @@ export const EditAccountForm = ({
   const [inputName, setInputName] = useState<string>(name);
   const [inputValue, setInputValue] = useState<number>(value);
   const [inputType, setInputType] = useState<string>(type);
+  const [isNotNumber, setIsNotNumber] = useState<boolean>(false);
 
   async function onSave() {
     await editAccount(accountId, {
@@ -33,6 +34,17 @@ export const EditAccountForm = ({
     });
     refresh();
     setEdit(false);
+  }
+
+  function handleValueChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (isNaN(Number(e.target.value))) {
+      setIsNotNumber(true);
+      return;
+    } else {
+      setIsNotNumber(false);
+    }
+
+    setInputValue(Number(e.target.value));
   }
 
   return (
@@ -53,14 +65,11 @@ export const EditAccountForm = ({
         disabled={!edit}
       />
       <Label>Value</Label>
-      <Input
-        type="number"
-        value={inputValue}
-        onChange={(e) => {
-          setInputValue(Number(e.target.value));
-        }}
-        disabled={!edit}
-      />
+      <Input value={inputValue} onChange={handleValueChange} disabled={!edit} />
+      {isNotNumber && (
+        <span className="text-red-500 text-sm">Only number is allowed</span>
+      )}
+      <br />
       <Label>Type</Label>
       <Input
         value={inputType}

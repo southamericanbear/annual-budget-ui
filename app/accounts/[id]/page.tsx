@@ -4,6 +4,7 @@ import { getAccountDetails as getAcountsDetailsService } from "@/lib/data/accoun
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { EditAccountForm } from "@/components/edit-account-form";
+import { BackBtn } from "@/components";
 
 const getAccountDetails = async (accountId: string) => {
   try {
@@ -37,6 +38,7 @@ export default async function AccountPage(props: any) {
   return (
     <SidebarMenuLayout>
       <div>
+        <BackBtn />
         <h1 className="text-2xl mb-4">{name}</h1>
         <EditAccountForm
           accountId={accountId}
