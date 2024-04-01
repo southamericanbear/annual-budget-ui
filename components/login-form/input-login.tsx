@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils/shadcn";
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const InputLogin = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
       <input
@@ -20,6 +20,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-Input.displayName = "Input";
+InputLogin.displayName = "InputLogin";
 
-export { Input };
+export { InputLogin };
