@@ -4,7 +4,7 @@ import { getAccountDetails as getAcountsDetailsService } from "@/lib/data/accoun
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { EditAccountForm } from "@/components/edit-account-form";
-import { BackBtn } from "@/components";
+import { BackBtn } from "@/components/back-btn";
 
 const getAccountDetails = async (accountId: string) => {
   try {
