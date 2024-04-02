@@ -1,22 +1,42 @@
 import type { NextAuthConfig } from "next-auth";
 import { cookies } from "next/headers";
+import { jwtVerify } from "jose";
+
+const validateJWT = async (token: string) => {
+  try {
+    await jwtVerify(
+      token,
+      //fakeToken,
+      new TextEncoder().encode(process.env.JWT_SECRET)
+    );
+    return true;
+  } catch (error) {
+    console.log({ error });
+    if (error) return false;
+  }
+};
 
 export const authConfig = {
   pages: {
     signIn: "/login",
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const user = cookies().get("user")?.value;
-      const isLoggedIn = !!auth?.user && !!user;
+    async authorized({ auth, request }) {
+      const { token } = JSON.parse(cookies().get("user")?.value || "{}") as {
+        user: string;
+        token: string;
+      };
+
+      const isLoggedIn = !!auth?.user && (await validateJWT(token));
 
       const isOnDashboard =
-        nextUrl.pathname.startsWith("/") && nextUrl.pathname !== "/login";
+        request.nextUrl.pathname.startsWith("/") &&
+        request.nextUrl.pathname !== "/login";
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
-        return Response.redirect(new URL("/", nextUrl));
+        return Response.redirect(new URL("/", request.nextUrl));
       }
       return true;
     },
