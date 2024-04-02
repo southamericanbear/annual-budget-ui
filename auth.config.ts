@@ -4,11 +4,19 @@ import { jwtVerify } from "jose";
 
 const validateJWT = async (token: string) => {
   try {
-    await jwtVerify(
+    const {
+      payload: { exp },
+    } = await jwtVerify(
       token,
-      //fakeToken,
       new TextEncoder().encode(process.env.JWT_SECRET)
     );
+
+    if (exp) {
+      if (exp < Date.now() / 1000) return false;
+    } else {
+      return false;
+    }
+
     return true;
   } catch (error) {
     console.log({ error });
