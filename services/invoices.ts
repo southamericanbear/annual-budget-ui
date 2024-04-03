@@ -1,4 +1,20 @@
-import { fetchWithFilesService } from "./api";
+import { fetchService, fetchWithFilesService } from "./api";
+
+export async function fetchInvoicesService(token: string) {
+  try {
+    const response = await fetchService("taxes/invoices", "GET", null, token);
+
+    if (!response) {
+      console.error("Failed to fetch invoices:", response);
+      return null;
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch invoices:", error);
+    return null;
+  }
+}
 
 export async function submitInvoiceService(
   files: FormData,
