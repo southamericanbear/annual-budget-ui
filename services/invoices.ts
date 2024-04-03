@@ -2,7 +2,12 @@ import { fetchService, fetchWithFilesService } from "./api";
 
 export async function fetchInvoicesService(token: string) {
   try {
-    const response = await fetchService("taxes/invoices", "GET", null, token);
+    const response = await fetchService(
+      "taxes/get-taxes-stats",
+      "GET",
+      null,
+      token
+    );
 
     if (!response) {
       console.error("Failed to fetch invoices:", response);
