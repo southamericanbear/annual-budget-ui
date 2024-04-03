@@ -7,11 +7,9 @@ import { SelectInvoicesForm } from "./select-invoices-form";
 import { submitInvoice } from "@/lib/actions/invoices";
 import { useToast } from "../ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
-import { useRouter } from "next/navigation";
 
 export const UploadInvoice = () => {
   const { toast } = useToast();
-  const { refresh } = useRouter();
 
   const [yearAndMonth, setYearAndMonth] = useState<{
     year: string | null;
@@ -35,20 +33,11 @@ export const UploadInvoice = () => {
       year: yearAndMonth.year,
     })
       .then(() => {
-        console.log("done");
-
         toast({
           variant: "default",
           title: "Invoice(s) upload",
           description: "Invoice(s) uploaded successfully",
         });
-
-        setYearAndMonth({
-          month: null,
-          year: null,
-        });
-
-        refresh();
       })
       .catch((error) => {
         console.error("Error submitting invoice:", error);

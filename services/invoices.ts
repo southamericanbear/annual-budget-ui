@@ -1,4 +1,4 @@
-import { fetchService } from "./api";
+import { fetchWithFilesService } from "./api";
 
 export async function submitInvoiceService(
   files: FormData,
@@ -6,7 +6,7 @@ export async function submitInvoiceService(
   month: string,
   token: string
 ) {
-  const response = await fetchService(
+  const response = await fetchWithFilesService(
     `taxes/upload-invoice?year=${year}&month=${month.toLowerCase()}`,
     "PUT",
     files,

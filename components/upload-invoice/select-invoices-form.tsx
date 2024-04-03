@@ -12,7 +12,6 @@ import {
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
 
 interface SelectInvoicesFormProps {
   onSubmit: (data: any) => void;
@@ -38,10 +37,6 @@ export const SelectInvoicesForm = ({ onSubmit }: SelectInvoicesFormProps) => {
       .map((file: any) => file.name)
       .join(", ");
   }
-
-  useEffect(() => {
-    form.reset();
-  }, [form, onSubmit]);
 
   return (
     <Form {...form}>
