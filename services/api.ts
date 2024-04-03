@@ -17,6 +17,8 @@ export async function fetchService(
 
     if (contentType) {
       (fetchOptions.headers as any)["Content-Type"] = contentType;
+    } else {
+      (fetchOptions.headers as any)["Content-Type"] = "application/json";
     }
 
     if (body && (method === "POST" || method === "PUT" || method === "PATCH")) {
@@ -28,6 +30,7 @@ export async function fetchService(
     }
 
     const endpoint = `${process.env.BASE_URL}/${url}`;
+
     const response = await fetch(endpoint, fetchOptions);
 
     const { status } = await response;

@@ -12,7 +12,7 @@ export async function login(email: string, password: string) {
       password,
     });
 
-    return data;
+    return data.data;
   } catch (error) {
     console.log(error);
   }
@@ -51,6 +51,7 @@ export const { auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         const userToken = { ...token, ...user };
+
         cookies().set("user", JSON.stringify(userToken));
       }
 
