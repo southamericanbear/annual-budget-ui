@@ -5,13 +5,8 @@ export async function fetchInsights(token: string): Promise<Insights> {
   const response = await fetchService("insights", "GET", null, token);
 
   if (!response) {
-    console.error(
-      "Failed to fetch insights en el fetchInsight:",
-      response.statusText
-    );
+    console.error("Failed to fetch insights en el fetchInsight:", response);
   }
 
-  const data = await response;
-
-  return data;
+  return response.data;
 }

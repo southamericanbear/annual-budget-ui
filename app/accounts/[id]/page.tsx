@@ -19,9 +19,9 @@ const getAccountDetails = async (accountId: string) => {
 
 export async function generateMetadata(props: any) {
   try {
-    const { name } = await getAccountDetails(props.params.id);
+    const data = await getAccountDetails(props.params.id);
 
-    return { title: name, description: "Account page" };
+    return { title: data?.name, description: "Account page" };
   } catch (error) {
     console.log(error);
 
@@ -31,22 +31,20 @@ export async function generateMetadata(props: any) {
 
 export default async function AccountPage(props: any) {
   const accountId = props.params.id;
-  const { name, value, type, transactions } = await getAccountDetails(
-    accountId
-  );
+  const data = await getAccountDetails(accountId);
 
   return (
     <SidebarMenuLayout>
       <div>
         <BackBtn />
-        <h1 className="text-2xl mb-4">{name}</h1>
+        <h1 className="text-2xl mb-4">{data?.name}</h1>
         <EditAccountForm
           accountId={accountId}
-          name={name}
-          value={value}
-          type={type}
+          name={data?.name ?? ""}
+          value={data?.value ?? 0}
+          type={data?.type ?? ""}
         />
-        <AccountTransactionsTable transactions={transactions} />
+        <AccountTransactionsTable transactions={data?.transactions ?? []} />
       </div>
     </SidebarMenuLayout>
   );
