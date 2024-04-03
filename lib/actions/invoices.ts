@@ -9,7 +9,7 @@ export const submitInvoice = async (
 ) => {
   const { token } = JSON.parse(cookies().get("user")?.value || "{}");
 
-  const response = await submitInvoiceService(files, year, month, token);
+  await submitInvoiceService(files, year, month, token);
 
   revalidatePath("/invoices");
 };

@@ -35,11 +35,19 @@ export const UploadInvoice = () => {
       year: yearAndMonth.year,
     })
       .then(() => {
+        console.log("done");
+
         toast({
           variant: "default",
           title: "Invoice(s) upload",
           description: "Invoice(s) uploaded successfully",
         });
+
+        setYearAndMonth({
+          month: null,
+          year: null,
+        });
+
         refresh();
       })
       .catch((error) => {
