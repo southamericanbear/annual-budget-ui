@@ -1,3 +1,4 @@
+import { InvoicesTable } from "@/components/invoices-table";
 import { SidebarMenuLayout } from "@/components/layouts";
 import { UploadInvoice } from "@/components/upload-invoice";
 import { getInvoiceDetails } from "@/lib/data/invoices";
@@ -8,7 +9,7 @@ export const metadata = {
 
 export default async function InvoicesPage() {
   const data = await getInvoiceDetails();
-  console.log({ data });
+
   return (
     <SidebarMenuLayout>
       <h1>Invoices</h1>
@@ -17,7 +18,9 @@ export default async function InvoicesPage() {
           <UploadInvoice />
         </div>
         <div className="bg-red-500 h-32"></div>
-        <div className="md:col-span-2 bg-green-500 h-32"></div>
+        <div className="md:col-span-2">
+          <InvoicesTable invoices={data} />
+        </div>
       </div>
     </SidebarMenuLayout>
   );

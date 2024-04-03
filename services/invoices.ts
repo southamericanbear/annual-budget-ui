@@ -1,6 +1,9 @@
 import { fetchService, fetchWithFilesService } from "./api";
+import { InvoicesInsights } from "@/types";
 
-export async function fetchInvoicesService(token: string) {
+export async function fetchInvoicesService(
+  token: string
+): Promise<InvoicesInsights[]> {
   try {
     const response = await fetchService(
       "taxes/get-taxes-stats",
@@ -11,13 +14,13 @@ export async function fetchInvoicesService(token: string) {
 
     if (!response) {
       console.error("Failed to fetch invoices:", response);
-      return null;
+      return [];
     }
 
     return response.data;
   } catch (error) {
     console.error("Failed to fetch invoices:", error);
-    return null;
+    return [];
   }
 }
 
