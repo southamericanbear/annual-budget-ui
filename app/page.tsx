@@ -14,7 +14,7 @@ export default async function Home() {
           <span className="text-2xl font-semibold">Basic Data:</span>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {basicData.map((data) => (
-              <DashboardCard key={data.name} {...data} />
+              <DashboardCard key={data.name} isAccount={false} {...data} />
             ))}
           </div>
         </div>
@@ -23,7 +23,7 @@ export default async function Home() {
           <span className="text-2xl font-semibold">Accounts:</span>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {accounts.map((account) => (
-              <DashboardCard key={account.id} {...account} />
+              <DashboardCard key={account.id} isAccount={true} {...account} />
             ))}
           </div>
         </div>
