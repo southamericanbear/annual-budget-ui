@@ -6,3 +6,4 @@ export * from "./table";
 export * from "./form";
 export * from "./select";
 export * from "./toast";
+export * from "./progress";
