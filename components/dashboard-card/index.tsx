@@ -37,11 +37,13 @@ export const DashboardCard = ({
           {currency && <span className="ml-1">{currency}</span>}
         </div>
       </CardContent>
-      <CardFooter className="px-0 py-2">
-        <Link href={isAccount ? `/accounts/${id}` : `/basic-data/${id}`}>
-          View Details
-        </Link>
-      </CardFooter>
+      {isAccount && (
+        <CardFooter className="px-0 py-2">
+          <Link href={isAccount ? `/accounts/${id}` : `/basic-data/${id}`}>
+            View Details
+          </Link>
+        </CardFooter>
+      )}
     </Card>
   );
 };
