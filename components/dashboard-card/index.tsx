@@ -14,6 +14,7 @@ interface DashboardCardProps {
   value: number;
   type?: string;
   currency?: string;
+  isAccount: boolean;
 }
 
 export const DashboardCard = ({
@@ -22,6 +23,7 @@ export const DashboardCard = ({
   currency,
   id,
   type,
+  isAccount,
 }: DashboardCardProps) => {
   return (
     <Card className="bg-white p-4 shadow rounded h-40">
@@ -35,9 +37,13 @@ export const DashboardCard = ({
           {currency && <span className="ml-1">{currency}</span>}
         </div>
       </CardContent>
-      <CardFooter className="px-0 py-2">
-        <Link href={id ? `/accounts/${id}` : `/account`}>View Details</Link>
-      </CardFooter>
+      {isAccount && (
+        <CardFooter className="px-0 py-2">
+          <Link href={isAccount ? `/accounts/${id}` : `/basic-data/${id}`}>
+            View Details
+          </Link>
+        </CardFooter>
+      )}
     </Card>
   );
 };
