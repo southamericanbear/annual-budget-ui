@@ -10,6 +10,10 @@ export const sideNavItems: SideNavItem[] = [
     path: "/invoices",
   },
   {
+    title: "Accounts",
+    path: "/accounts",
+  },
+  {
     title: "Basic Data",
     path: "/basic-data",
   },
