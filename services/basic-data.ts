@@ -20,6 +20,28 @@ export async function fetchBasicDataService(
   }
 }
 
+export async function createBasicDataService(
+  data: {
+    name: string;
+    value: number;
+    currency: string;
+    category: string;
+  },
+  token: string
+) {
+  try {
+    const response = await fetchService("basic-data", "POST", data, token);
+
+    if (!response) {
+      console.error("Failed to create basic data:", response);
+    }
+
+    return response;
+  } catch (error) {
+    console.error("Failed to create basic data:", error);
+  }
+}
+
 export async function updateBasicDataService(
   data: {
     name: string;

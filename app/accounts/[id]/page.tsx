@@ -1,9 +1,9 @@
 import { SidebarMenuLayout } from "@/components/layouts/index";
-import { AccountTransactionsTable } from "@/components/account-transactions-table";
-import { getAccountDetails as getAcountsDetailsService } from "@/lib/data/account-details";
+import { AccountTransactionsTable } from "@/components/accounts/account-transactions-table";
+import { getAccountDetails as getAcountsDetailsService } from "@/lib/data/account";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import { EditAccountForm } from "@/components/edit-account-form";
+import { EditAccountForm } from "@/components/accounts/edit-account-form";
 import { BackBtn } from "@/components/back-btn";
 
 const getAccountDetails = async (accountId: string) => {

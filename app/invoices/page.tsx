@@ -1,9 +1,11 @@
 import moment from "moment";
-import { InvoicesTable } from "@/components/invoices-table";
+import {
+  InvoicesTable,
+  UploadInvoice,
+  CurrentMonthInvoicesInfo,
+} from "@/components/invoices";
 import { SidebarMenuLayout } from "@/components/layouts";
-import { UploadInvoice } from "@/components/upload-invoice";
 import { getInvoiceDetails } from "@/lib/data/invoices";
-import { CurrentMonthInvoicesInfo } from "@/components/current-month-invoices-info";
 
 export const metadata = {
   title: "Invoices",

@@ -2,7 +2,8 @@ import { NoDataPlaceHolder } from "@/components/no-data-placeholder";
 import { SidebarMenuLayout } from "@/components/layouts";
 import { Card, CardContent } from "@/components/ui";
 import { getBasicData } from "@/lib/data/basic-data";
-import { BasicDataCard } from "@/components/basic-data-card";
+import { BasicDataCard } from "@/components/basic-data/basic-data-card";
+import { CreateBasicDataModal } from "@/components/basic-data/create-basic-data-modal";
 
 export async function generateMetadata() {
   return {
@@ -16,6 +17,9 @@ export default async function BasicDataPage() {
 
   return (
     <SidebarMenuLayout>
+      <div className="flex justify-end w-full my-3">
+        <CreateBasicDataModal />
+      </div>
       {data.length ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.map((item) => (

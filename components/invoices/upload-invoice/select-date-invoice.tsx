@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui";
+} from "../../ui";
 import moment from "moment";
 
 interface SelectDateInvoiceProps {

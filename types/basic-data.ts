@@ -1,3 +1,10 @@
+export enum BasicDataCategory {
+  RENT = "rent",
+  SALARY = "salary",
+  DOLLAR = "dollar",
+  OTHER = "other",
+}
+
 export interface BasicDataDetails {
   id: string;
   user_id: string;
@@ -6,5 +13,5 @@ export interface BasicDataDetails {
   currency: string;
   createdAt: string;
   updatedAt: string;
-  category: string;
+  category: BasicDataCategory;
 }
