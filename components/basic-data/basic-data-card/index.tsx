@@ -1,11 +1,18 @@
 "use client";
 import { BasicDataDetails } from "@/types";
 import React from "react";
-import ItemsCardLayout from "../layouts/items-card-layout";
+import ItemsCardLayout from "../../layouts/items-card-layout";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button, Form, FormControl, FormField, FormItem, Input } from "../ui";
+import {
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  Input,
+} from "../../ui";
 import { updateBasicData } from "@/lib/actions/basic-data";
 
 const formSchema = z.object({

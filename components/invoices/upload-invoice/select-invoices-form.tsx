@@ -8,7 +8,7 @@ import {
   FormLabel,
   Button,
   Input,
-} from "../ui";
+} from "../../ui";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

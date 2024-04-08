@@ -3,7 +3,7 @@ import { Label, Input } from "@/components/ui";
 import { CiEdit } from "react-icons/ci";
 import { useState } from "react";
 import { editAccount } from "@/lib/actions/account";
-import ItemsCardLayout from "../layouts/items-card-layout";
+import ItemsCardLayout from "../../layouts/items-card-layout";
 import { useRouter } from "next/navigation";
 
 interface EditAccountFormProps {
