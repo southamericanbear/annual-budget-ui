@@ -1,3 +1,13 @@
+export enum AccountType {
+  CASH = "cash",
+  BANK = "bank",
+  CREDIT = "credit",
+  INVESTING = "investing",
+  SAVINGS = "savings",
+  TRAVEL = "travel",
+  OTHER = "other",
+}
+
 export interface AccountDetails {
   id: string;
   user_id: string;
@@ -5,7 +15,7 @@ export interface AccountDetails {
   value: number;
   createdAt: string;
   updatedAt: string;
-  type: string;
+  type: AccountType;
   transactions: Transaction[];
 }
 

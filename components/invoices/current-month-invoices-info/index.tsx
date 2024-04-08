@@ -1,7 +1,7 @@
 import React from "react";
-import ItemsCardLayout from "../layouts/items-card-layout";
+import ItemsCardLayout from "@/components/layouts/items-card-layout";
 import { InvoicesInsights } from "@/types";
-import { CardContent, CardHeader, CardTitle, Progress } from "../ui";
+import { CardContent, CardHeader, CardTitle, Progress } from "@/components/ui";
 
 interface CurrentMonthInvoicesInfoProps {
   invoice: InvoicesInsights | null;

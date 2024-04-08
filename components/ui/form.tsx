@@ -110,17 +110,22 @@ const FormControl = React.forwardRef<
     useFormField();
 
   return (
-    <Slot
-      ref={ref}
-      id={formItemId}
-      aria-describedby={
-        !error
-          ? `${formDescriptionId}`
-          : `${formDescriptionId} ${formMessageId}`
-      }
-      aria-invalid={!!error}
-      {...props}
-    />
+    <>
+      <Slot
+        ref={ref}
+        id={formItemId}
+        aria-describedby={
+          !error
+            ? `${formDescriptionId}`
+            : `${formDescriptionId} ${formMessageId} LA CONCHA DE TU HERMANA `
+        }
+        aria-invalid={!!error}
+        {...props}
+      />
+      {error?.message && (
+        <p className="text-sm font-medium text-destructive">{error?.message}</p>
+      )}
+    </>
   );
 });
 FormControl.displayName = "FormControl";

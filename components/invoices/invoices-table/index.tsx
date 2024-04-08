@@ -1,6 +1,12 @@
 import { InvoicesInsights } from "@/types";
-import ItemsCardLayout from "../layouts/items-card-layout";
-import { Table, TableBody, TableHead, TableHeader, TableRow } from "../ui";
+import ItemsCardLayout from "@/components/layouts/items-card-layout";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui";
 import moment from "moment";
 
 interface InvoicesTableProps {
