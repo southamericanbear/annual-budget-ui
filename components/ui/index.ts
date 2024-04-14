@@ -7,3 +7,4 @@ export * from "./form";
 export * from "./select";
 export * from "./toast";
 export * from "./progress";
+export * from "./dropdown-menu";

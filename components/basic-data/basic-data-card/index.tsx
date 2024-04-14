@@ -1,6 +1,6 @@
 "use client";
 import { BasicDataDetails } from "@/types";
-import React from "react";
+import React, { useMemo } from "react";
 import ItemsCardLayout from "../../layouts/items-card-layout";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,6 +14,8 @@ import {
   Input,
 } from "../../ui";
 import { updateBasicData } from "@/lib/actions/basic-data";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { updateDollarBlue } from "@/store/basic-data/basicDataSlice";
 
 const formSchema = z.object({
   name: z.string(),
@@ -29,6 +31,8 @@ export const BasicDataCard = ({
   category,
   id,
 }: BasicDataDetails) => {
+  const dispatch = useAppDispatch();
+  const { dollarBlue } = useAppSelector((state) => state.BasicDataReducer);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,6 +57,19 @@ export const BasicDataCard = ({
       id
     );
   }
+
+  useMemo(() => {
+    if (category === "dollar") {
+      console.log("es dolar", category);
+      dispatch(updateDollarBlue(value));
+    }
+  }, [category, dispatch, value]);
+
+  const calculatePriceInDollarblue = useMemo(() => {
+    if (currency === "ARS" && dollarBlue) {
+      const priceInDollar = value / dollarBlue;
+    }
+  }, [dollarBlue, value, currency]);
 
   return (
     <ItemsCardLayout className="p-5">

@@ -28,6 +28,7 @@ import { AccountType } from "@/types";
 const FormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   value: z.string(),
+  currency: z.enum(["USD", "EUR", "GBP", "JPY", "CNY", "ARS"]),
   type: z.enum([
     "cash",
     "bank",
@@ -47,6 +48,7 @@ export const CreateAccountModal = () => {
     defaultValues: {
       name: "",
       value: "0",
+      currency: "USD",
       type: "other",
     },
   });
@@ -118,6 +120,38 @@ export const CreateAccountModal = () => {
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="currency"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Currency</FormLabel>
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Currency" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white shadow-lg rounded-md p-4 w-96">
+                        <SelectItem value="USD">USD</SelectItem>
+                        <SelectItem value="EUR">EUR</SelectItem>
+                        <SelectItem value="GBP">GBP</SelectItem>
+                        <SelectItem value="JPY">JPY</SelectItem>
+                        <SelectItem value="CNY">CNY</SelectItem>
+                        <SelectItem value="ARS">ARS</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormDescription>
+                    This is the currency of the account
+                  </FormDescription>
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="type"

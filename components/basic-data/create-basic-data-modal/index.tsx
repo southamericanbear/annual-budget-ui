@@ -29,7 +29,7 @@ import { z } from "zod";
 const FormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   value: z.string(),
-  currency: z.enum(["USD", "EUR", "GBP", "JPY", "CNY"]),
+  currency: z.enum(["USD", "EUR", "GBP", "JPY", "CNY", "ARS"]),
   category: z.enum([
     BasicDataCategory.RENT,
     BasicDataCategory.SALARY,
@@ -133,6 +133,7 @@ export const CreateBasicDataModal = () => {
                       <SelectItem value="GBP">GBP</SelectItem>
                       <SelectItem value="JPY">JPY</SelectItem>
                       <SelectItem value="CNY">CNY</SelectItem>
+                      <SelectItem value="ARS">ARS</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormItem>

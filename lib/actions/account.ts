@@ -3,6 +3,7 @@
 import {
   editAccountDetails,
   createAccount as createAccountService,
+  deleteAccountService,
 } from "@/services";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
@@ -13,7 +14,6 @@ export const createAccount = async (payload: {
   type: string;
 }) => {
   const { token } = JSON.parse(cookies().get("user")?.value || "{}");
-
   await createAccountService(payload, token);
   revalidatePath("/accounts");
 };
@@ -30,4 +30,10 @@ export const editAccount = async (
 
   await editAccountDetails(token, accountId, description);
   revalidatePath(`/account/${accountId}`);
+};
+
+export const deleteAccount = async (id: string) => {
+  const { token } = JSON.parse(cookies().get("user")?.value || "{}");
+
+  await deleteAccountService(token, id);
 };
