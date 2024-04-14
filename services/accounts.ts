@@ -89,3 +89,23 @@ export async function editAccountDetails(
     return null;
   }
 }
+
+export async function deleteAccountService(token: string, accountId: string) {
+  try {
+    const response = await fetchService(
+      `accounts/${accountId}`,
+      "DELETE",
+      null,
+      token
+    );
+
+    if (!response) {
+      console.error("Failed to delete account:", response);
+    }
+
+    return response;
+  } catch (error) {
+    console.error("Failed to delete account:", error);
+    return null;
+  }
+}
