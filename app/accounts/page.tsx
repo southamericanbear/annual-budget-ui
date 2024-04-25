@@ -3,12 +3,10 @@ import { NoDataPlaceHolder } from "@/components/no-data-placeholder";
 import { SidebarMenuLayout } from "@/components/layouts";
 import { Card, CardContent } from "@/components/ui";
 import { getAccounts } from "@/lib/data/account";
-import { cookies } from "next/headers";
 import { CreateAccountModal } from "@/components/accounts";
 
 export default async function AccountsPage() {
-  const { token } = JSON.parse(cookies().get("user")?.value || "{}");
-  const accounts = await getAccounts(token);
+  const accounts = await getAccounts();
 
   return (
     <SidebarMenuLayout>

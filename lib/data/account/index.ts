@@ -1,6 +1,8 @@
 import { fetchAccountDetails, fetchAccounts } from "@/services/accounts";
+import { cookies } from "next/headers";
 
-export async function getAccounts(token: string) {
+export async function getAccounts() {
+  const { token } = JSON.parse(cookies().get("user")?.value || "{}");
   try {
     const data = await fetchAccounts(token);
 
