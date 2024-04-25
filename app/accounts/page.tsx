@@ -6,8 +6,8 @@ import { getAccounts } from "@/lib/data/account";
 import { CreateAccountModal } from "@/components/accounts";
 
 export default async function AccountsPage() {
-  //const accounts = await getAccounts();
-
+  const accounts = await getAccounts();
+  console.log({ accounts });
   return (
     <SidebarMenuLayout>
       <div className="flex justify-end w-full my-3">
