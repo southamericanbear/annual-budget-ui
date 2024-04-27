@@ -7,13 +7,13 @@ import { CreateAccountModal } from "@/components/accounts";
 
 export default async function AccountsPage() {
   const accounts = await getAccounts();
-  console.log({ accounts });
+
   return (
     <SidebarMenuLayout>
       <div className="flex justify-end w-full my-3">
         <CreateAccountModal />
       </div>
-      {/* {accounts?.length ? (
+      {accounts?.length ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {accounts?.map((account) => (
             <DashboardCard key={account.id} isAccount={true} {...account} />
@@ -25,7 +25,7 @@ export default async function AccountsPage() {
             <NoDataPlaceHolder />
           </CardContent>
         </Card>
-      )} */}
+      )}
     </SidebarMenuLayout>
   );
 }
